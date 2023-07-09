@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="INFO" packages="kl.kcsp.log.appender" monitorInterval="30">
+    <appenders>
+        <!--这个输出控制台的配置 -->
+        <console name="Console" target="SYSTEM_OUT">
+            <!--输出日志的格式 -->
+            <PatternLayout charset="UTF-8" pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS}{GMT+8} [%t] %c{1} - %msg%n"/>
+        </console>
+    </appenders>
+    <loggers>
+        <root level="INFO">
+            <appender-ref ref="Console"/>
+        </root>
+    </loggers>
+</configuration>

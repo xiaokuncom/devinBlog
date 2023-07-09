@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.7.8</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/> <!-- lookup parent from repository  -->
     </parent>
     <groupId>com.devin</groupId>
     <artifactId>prometheusMetrics</artifactId>
@@ -29,7 +29,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!--Springboot集成prometheus依赖-->
+        <!--Springboot集成prometheus依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -43,20 +43,20 @@
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
 
-        <!--自定义指标依赖-->
-        <!-- The client -->
+        <!--自定义指标依赖 -->
+        <!-- The client  -->
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>simpleclient</artifactId>
             <version>${io.prometheus.version}</version>
         </dependency>
-        <!-- Hotspot JVM metrics-->
+        <!-- Hotspot JVM metrics -->
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>simpleclient_hotspot</artifactId>
             <version>${io.prometheus.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.prometheus/simpleclient_servlet -->
+        <!-- https://mvnrepository.com/artifact/io.prometheus/simpleclient_servlet  -->
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>simpleclient_servlet</artifactId>
