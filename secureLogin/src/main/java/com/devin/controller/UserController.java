@@ -20,12 +20,12 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/add")
-    public void add(@Validated @RequestBody User user) {
+    public void add(@Validated @RequestBody User user) throws Exception {
         userService.add(user);
     }
 
     @GetMapping("/login")
-    public String login( User user) {
+    public String login( User user) throws Exception {
         return userService.login(user);
     }
 

@@ -14,11 +14,11 @@ public interface UserService extends IService<User> {
      * @param user
      * @return
      */
-    String login(User user);
+    String login(User user) throws Exception;
 
     /**
      * 注册用户
      * @param user
      */
-    void add(User user);
+    void add(User user) throws Exception;
 }
