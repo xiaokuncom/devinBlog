@@ -11,3 +11,13 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+  ldap:
+    urls: ldap://192.168.6.12:389
+    username: cn=admin,dc=devin,dc=com
+    password: 123456
+    base: cn=test,ou=secure,dc=devin,dc=com
+devin:
+  blog:
+    publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAK9aqKR8Wx7hpw/Uv2+VL8A6no00+3U42KNgbRQjPmcsB5kKYTjafGGTXyPdIl7qkCQY655S4M4+ENzbXKZcbp0CAwEAAQ==
+    privateKey: MIIBVgIBADANBgkqhkiG9w0BAQEFAASCAUAwggE8AgEAAkEAr1qopHxbHuGnD9S/b5UvwDqejTT7dTjYo2BtFCM+ZywHmQphONp8YZNfI90iXuqQJBjrnlLgzj4Q3NtcplxunQIDAQABAkEAnjuOpi7ZArrYx75QqN3UYwAChqViq1qKkpK2m09aRjm/lhJvdFHg21sqn6/OQIPIq1GVoJGIRG0XKQ9nRve4+QIhAPkNw36zEl0TQIhMQzz3YysnMl5VeTGHnBLGGlyxkF6zAiEAtD6ulspPeNAPMlMXzABUKWImx4Y8t3derjq92NJepW8CIQC1uMg7S1gL179PdC3fbzbJxujmkgFDFYrY2/liRyFrJwIgMu9jtwkE3EcvhDEnEGcnYWpzOv8cOVxqTSIcdCE+zdECIQCaq2usptt2808lEC6lV81wFIl9kjXain79zROKRDwcUw==
+    verifyType: 0
