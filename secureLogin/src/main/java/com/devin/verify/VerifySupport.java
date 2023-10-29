@@ -12,7 +12,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * @author liangkun
+ * @author Java Devin
  * @createTime 2023/10/22 17:02
  * @desc  鉴权支持类
  */

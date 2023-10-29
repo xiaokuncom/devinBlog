@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
 
 /**
- * @author liangkun
+ * @author Java Devin
  * @createTime 2023/10/22 17:04
  * @desc  鉴权类型
  */

@@ -18,9 +18,9 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @author liangkun
+ * @author Java Devin
  * @createTime 2023/10/22 17:10
- * @desc
+ * @desc  Ldap鉴权
  */
 @Component
 @Slf4j
@@ -39,13 +39,18 @@ public class LdapVerify extends AbstractVerify {
 
     @Override
     public boolean verify(User user) throws Exception {
+        // 将入参的密码进行解密
         String decodePwd = RsaUtil.RSADecode(loginConfig.getPrivateKey(), user.getPwd());
+
+        // 查询该用户是否存在
         EqualsFilter equalsFilter = new EqualsFilter(LDAP_CN, user.getLoginName());
         List<String> search = ldapTemplate.search(LdapQueryBuilder.query().filter(equalsFilter), (AttributesMapper<String>) r -> r.get("CN").get().toString());
         if (CollectionUtils.isEmpty(search)) {
             log.error("用户不存在，请检查ldap！！");
             throw new Exception("用户名或密码错误！！");
         }
+
+        // 校验密码是否一致(注意Ldap中是手动设置的明文密码)
         return ldapTemplate.authenticate("", equalsFilter.toString(), decodePwd);
     }
 

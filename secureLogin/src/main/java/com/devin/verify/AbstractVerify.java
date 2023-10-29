@@ -3,7 +3,7 @@ package com.devin.verify;
 import org.springframework.stereotype.Component;
 
 /**
- * @author liangkun
+ * @author Java Devin
  * @createTime 2023/10/22 17:12
  * @desc 鉴权父类
  */

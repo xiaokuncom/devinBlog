@@ -5,7 +5,6 @@ import com.devin.config.LoginConfig;
 import com.devin.constants.VerifyType;
 import com.devin.entity.User;
 import com.devin.mapper.UserMapper;
-import com.devin.service.UserService;
 import com.devin.util.RsaUtil;
 import com.devin.verify.AbstractVerify;
 import lombok.extern.slf4j.Slf4j;
@@ -15,9 +14,9 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @author liangkun
+ * @author Java Devin
  * @createTime 2023/10/22 17:10
- * @desc
+ * @desc  数据库鉴权
  */
 @Component
 @Slf4j
