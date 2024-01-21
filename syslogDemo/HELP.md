@@ -1,0 +1,1 @@
+使用logback发送syslog日志、syslog发送UDP/TCP协议、自定义appder发送syslog日志
