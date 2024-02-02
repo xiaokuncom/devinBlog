@@ -3,7 +3,7 @@
     <!--定义日志文件的存储地址 勿在LogBack的配置中使用相对路径 -->
     <property name="LOG_HOME" value="${logging.loghome}/${HOSTNAME}"/>
     <property name="LOG_PATTERN"
-              value="[[[%d{yyyy-MM-dd HH:mm:ss.SSS} | %thread | %tid | CTSP-ADMIN | %hostName | %ip | %-5level | %logger{50}.%M:%L | %msg %ex{full} ]]] %n"/>
+              value="[[[%d{yyyy-MM-dd HH:mm:ss.SSS} | %thread | devin-blog | %-5level | %logger{50}.%M:%L | %msg %ex{full} ]]] %n"/>
 
     <!--控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -13,12 +13,29 @@
         </encoder>
     </appender>
 
+<!--    &lt;!&ndash;syslog UDP输出 &ndash;&gt;-->
+<!--    <appender name="SYSLOGUDP" class="ch.qos.logback.classic.net.SyslogAppender">-->
+<!--        <syslogHost>localhost</syslogHost> &lt;!&ndash; Syslog 服务器的地址 &ndash;&gt;-->
+<!--        <port>10085</port> &lt;!&ndash; Syslog 服务器的端口号 &ndash;&gt;-->
+<!--        <facility>LOCAL0</facility> &lt;!&ndash; Syslog 设备标识 &ndash;&gt;-->
+<!--        <suffixPattern>${LOG_PATTERN}</suffixPattern> &lt;!&ndash; 自定义日志格式 &ndash;&gt;-->
+<!--    </appender>-->
+
+<!--    &lt;!&ndash;syslog TCP输出 &ndash;&gt;-->
+<!--    <appender name="SYSLOGTCP" class="com.devin.syslogdemo.appender.SysLogAppenderTCP">-->
+<!--        <syslogHost>localhost</syslogHost> &lt;!&ndash; Syslog 服务器的地址 &ndash;&gt;-->
+<!--        <port>10086</port> &lt;!&ndash; Syslog 服务器的端口号 &ndash;&gt;-->
+<!--        <facility>LOCAL0</facility> &lt;!&ndash; Syslog 设备标识 &ndash;&gt;-->
+<!--        <suffixPattern>${LOG_PATTERN}</suffixPattern> &lt;!&ndash; 自定义日志格式 &ndash;&gt;-->
+<!--    </appender>-->
+
     <logger name="com.devin.syslogdemo.utils.SyslogUtil" level="info"></logger>
 
     <!--日志输出级别 -->
-    <root level="INFO">
+    <root level="error">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="FILE"/>
+<!--        <appender-ref ref="SYSLOGUDP"/>-->
+<!--        <appender-ref ref="SYSLOGTCP"/>-->
     </root>
 
 </configuration>

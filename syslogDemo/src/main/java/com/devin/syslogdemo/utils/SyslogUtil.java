@@ -37,21 +37,6 @@ public class SyslogUtil {
      */
     public static final int SYSLOG_SEND_PROTOCOL_TCP = 1;
 
-
-    /**
-     * 平台默认的日志pattern
-     */
-    public static final String DEFAULT_LOG_PATTERN = "[[[%d{yyyy-MM-dd HH:mm:ss.SSS} | %thread | %tid | CTSP-ADMIN | %hostName | %ip | %-5level | %logger{50}.%M:%L | %msg %ex{full} ]]] %n";
-
-    /**
-     * 地址字段名
-     */
-    public static final String HOST = "host";
-    /**
-     * 端口字段名
-     */
-    public static final String PORT = "port";
-
     /**
      * 发送syslog统一入口
      *
@@ -70,23 +55,35 @@ public class SyslogUtil {
      * @throws Exception
      */
     public static void setSyslog(String host, int port, int protocol, String pattern) throws Exception {
+        // 获取一个LoggerContext对象
         LoggerContext lc = (LoggerContext) StaticLoggerBinder.getSingleton().getLoggerFactory();
+        // 使用获取到的LoggerContext获取名为 SyslogUtil 的 Logger 对象
         Logger logger = lc.getLogger(SyslogUtil.class);
 
+        // 关闭之前的Syslog日志处理器
         closeSyslog(logger);
+        // 获取一个新的Syslog日志处理器
         SyslogAppender syslogAppender = SyslogUtil.getAppender(host, port, protocol);
 
-        // 以下配置除了pattern以外，其余配置一个都不能少，少一个就报错，就发不出去，一删一个不吱声！！！
-        // 大牛请无视这句话！！！
+        // 配置参数
+        //  以下配置除了pattern以外，其余配置一个都不能少，少一个就报错，就发不出去，一删一个不吱声！！！
+        //  大牛请无视这句话！！！
         if (StringUtils.isNotBlank(pattern)) {
             syslogAppender.setSuffixPattern(pattern);
         }
+        //  设置日志记录器的上下文
         syslogAppender.setContext(lc);
         syslogAppender.setCharset(StandardCharsets.UTF_8);
+        //  设置日志 facility
         syslogAppender.setFacility(DEFAULT_SYSLOG_FACILITY);
+        //  日志名称
         syslogAppender.setName(DEFAULT_SYSLOG_NAME);
+        //  添加一个日志级别过滤器，用于控制日志的输出级别
         syslogAppender.addFilter(new ThresholdFilter());
+
+        // 启动Syslog日志处理器
         syslogAppender.start();
+        // 将配置好的Syslog日志处理器添加到日志记录器中
         logger.addAppender(syslogAppender);
     }
 
